@@ -32,9 +32,16 @@ Test
 
 kubectl-aks-debug-node
 
-randra@Lenovo-WorkRG:/mnt/c/Users/ragatgen$ kubectl-aks-debug-node 
+
+randra@Lenovo-WorkRG:/mnt/c/Users/ragatgen$    kubectl-aks-debug-node 
+
+
 Available nodes in your AKS cluster:
+
+
 NAME                                STATUS   ROLES    AGE   VERSION
 aks-nodepool1-29206393-vmss000004   Ready    <none>   69m   v1.30.9
 aks-nodepool1-29206393-vmss000005   Ready    <none>   69m   v1.30.9
+
+
 Enter the node name to debug: 
