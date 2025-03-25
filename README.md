@@ -1,4 +1,4 @@
-Use  git clone https://github.com/ragatgen/kubectl-aks-debug-node.git and then
+Use  git clone https://github.com/ragatgen/kubectl-aks-debug-node.git 
 
 cd to the Directory named as the Repo kubectl-aks-debug-node
 
@@ -20,6 +20,8 @@ randra@Lenovo-WorkRG:/mnt/c/Users/ragatgen$
 
 
 Test
+
+
 kubectl-aks-debug-node
 
 randra@Lenovo-WorkRG:/mnt/c/Users/ragatgen$ kubectl-aks-debug-node 
