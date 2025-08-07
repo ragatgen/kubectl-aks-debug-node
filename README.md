@@ -1,47 +1,48 @@
-Use  git clone https://github.com/ragatgen/kubectl-aks-debug-node.git 
+# kubectl-aks-debug-node
 
-cd to the Directory named as the Repo kubectl-aks-debug-node
+This repository provides a `kubectl` plugin to debug nodes in your AKS (Azure Kubernetes Service) cluster.
 
+## Installation
 
-
+```bash
+git clone https://github.com/ragatgen/kubectl-aks-debug-node.git
+cd kubectl-aks-debug-node
 sudo mv kubectl-aks-debug-node /usr/local/bin/
-
-
 sudo chmod +x /usr/local/bin/kubectl-aks-debug-node
+```
 
+## Verify Installation
 
+Run the following command to list installed plugins:
 
-Verify that it’s listed as a plugin:
+```bash
+kubectl plugin list
+```
 
-
-randra@Lenovo-WorkRG:/mnt/c/Users/ragatgen$   kubectl plugin list
-
-
-
-
+Expected output:
+```
 /usr/local/bin/kubectl-aks-debug-node
+```
 
-/usr/local/bin/kubectl-convert
+## Usage
 
+To start debugging a node in your AKS cluster:
 
-
-
-
-Test
-
-
+```bash
 kubectl-aks-debug-node
+```
 
+Example interaction:
 
-randra@Lenovo-WorkRG:/mnt/c/Users/ragatgen$    kubectl-aks-debug-node 
-
-
+```
 Available nodes in your AKS cluster:
-
-
-NAME                                STATUS   ROLES    AGE   VERSION
-aks-nodepool1-29206393-vmss000004   Ready    <none>   69m   v1.30.9
-aks-nodepool1-29206393-vmss000005   Ready    <none>   69m   v1.30.9
-
-
-Enter the node name to debug: 
+1) aks-default-99999999-vmss000000
+2) aks-default-99999999-vmss000001
+3) aks-default-99999999-vmss000002
+Choose one node by number: 2
+You selected: aks-default-99999999-vmss000001
+Debugging node: aks-default-99999999-vmss000001...
+Creating debugging pod node-debugger-aks-default-99999999-vmss000001-njktc with container debugger on node aks-default-99999999-vmss000001.
+If you don't see a command prompt, try pressing enter.
+root@aks-default-99999999-vmss000001:/#
+```
