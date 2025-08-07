@@ -44,18 +44,25 @@ if ! kubectl debug --help &>/dev/null; then
     exit 1
 fi
 
-# List available nodes
+# Get available nodes
+#kubectl get nodes
+nodes=($(kubectl get nodes -o name | sed 's|node/||'))
+
+# Display the nodes with numbers
 echo "Available nodes in your AKS cluster:"
-kubectl get nodes
+for i in "${!nodes[@]}"; do
+  echo "$((i+1))) ${nodes[$i]}"
+done
 
-# Prompt user for node name
-echo -n "Enter the node name to debug: "
-read NODE_NAME
-
+# Prompt user to choose a node
+read -p "Choose one node by number: " choice
 # Validate input
-if [ -z "$NODE_NAME" ]; then
-    echo "Error: Node name cannot be empty."
-    exit 1
+if [[ "$choice" -ge 1 && "$choice" -le "${#nodes[@]}" ]]; then
+  NODE_NAME="${nodes[$((choice-1))]}"
+  echo "You selected: $NODE_NAME"
+else
+  echo "Invalid choice. Please run the script again."
+  exit 1
 fi
 
 # Run the debug command
